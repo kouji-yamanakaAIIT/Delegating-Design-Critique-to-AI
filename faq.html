@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ — Delegating Design Critique to AI While Preserving Human Decision Authority — HAI ’26</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 16px; line-height: 1.7; color: #1f2328; }
+    header { margin-bottom: 2rem; }
+    .back { font-size: .9rem; }
+    .back a, nav a, footer a { color: #0969da; }
+    .conf { font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: #57606a; margin: 1rem 0 0; }
+    h1 { font-size: 2.2rem; line-height: 1.3; margin: .4rem 0 .3rem; }
+    .paper { margin: 0; color: #444c56; }
+    nav { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: .8rem 1.2rem; margin-bottom: 2rem; }
+    nav ol { margin: 0; padding-left: 1.4rem; }
+    nav .count { color: #57606a; font-size: .85rem; }
+    h2 { font-size: 1.35rem; margin: 2.6rem 0 1rem; padding-bottom: .3rem; border-bottom: 2px solid #1f2328; scroll-margin-top: 1rem; }
+    .qa { margin: 0 0 1.8rem; padding-bottom: 1.4rem; border-bottom: 1px solid #d0d7de; scroll-margin-top: 1rem; }
+    .qa h3 { font-size: 1.05rem; line-height: 1.5; margin: 0 0 .5rem; }
+    .qn { color: #57606a; }
+    .qa p { margin: 0 0 .6rem; }
+    .ja { background: #f6f8fa; border-left: 3px solid #d0d7de; padding: .7rem 1rem; margin-top: .8rem; font-size: .95rem; color: #2f363d; }
+    .ja p:last-child { margin-bottom: 0; }
+    .ja-q { font-weight: 600; }
+    .top { text-align: right; font-size: .85rem; }
+    footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid #d0d7de; font-size: .9rem; color: #57606a; }
+    footer p { margin: .3rem 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="back"><a href="./">← Back to project page</a></p>
+    <p class="conf">HAI ’26 · 14th Int’l Conference on Human-Agent Interaction · Osaka, Nov 16–19, 2026</p>
+    <h1>FAQ</h1>
+    <p class="paper">Delegating Design Critique to AI While Preserving Human Decision Authority: An AI Design Director for a Small Apparel Brand</p>
+  </header>
+
+  <nav aria-label="Topics">
+    <ol>
+      <li><a href="#research-aim-novelty">Research aim &amp; novelty</a> <span class="count">(3)</span></li>
+      <li><a href="#human-decision-authority">Human decision authority</a> <span class="count">(6)</span></li>
+      <li><a href="#research-questions">Research questions</a> <span class="count">(2)</span></li>
+      <li><a href="#evaluation-design">Evaluation design</a> <span class="count">(5)</span></li>
+      <li><a href="#creativity">Creativity</a> <span class="count">(3)</span></li>
+      <li><a href="#rag-knowledge-design">RAG &amp; knowledge design</a> <span class="count">(10)</span></li>
+      <li><a href="#implementation">Implementation</a> <span class="count">(6)</span></li>
+      <li><a href="#reliability-quality">Reliability &amp; quality</a> <span class="count">(2)</span></li>
+      <li><a href="#critiques-of-the-research">Critiques of the research</a> <span class="count">(2)</span></li>
+      <li><a href="#organizational-knowledge">Organizational knowledge</a> <span class="count">(2)</span></li>
+      <li><a href="#security-ethics">Security &amp; ethics</a> <span class="count">(2)</span></li>
+      <li><a href="#generalization-limitations">Generalization &amp; limitations</a> <span class="count">(1)</span></li>
+    </ol>
+  </nav>
+
+  <section id="research-aim-novelty">
+    <h2>Research aim &amp; novelty</h2>
+    <article class="qa" id="q1">
+      <h3><span class="qn">Q1.</span> What is novel about this research? How does it differ from existing generative AI or design-support AI?</h3>
+      <p>The core of this research is not the accuracy of the AI&#x27;s design evaluation itself, but the design of a mechanism that lets AI support reviews while humans keep final decision authority. Instead of giving an overall score or a pass/fail, the AI presents the criteria, strengths, concerns, uncertainties, matters for human judgment, and revision options, each with its evidence. In addition, we do not treat disagreement between humans and the AI simply as an AI error; we treat it as an opportunity to revisit criteria that may be ambiguous or outdated, or to recognize intentional creative departure.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">この研究の新規性は何ですか。既存の生成AIやデザイン支援AIとの違いは何ですか？</p>
+        <p>本研究の中心は、AIのデザイン評価精度そのものではなく、AIにレビューを支援させながら、人間が最終判断権を持ち続けるための仕組みを設計している点です。AIは総合点や合否を出すのではなく、判断基準、強み、懸念、不確実な点、人間が判断すべき点、修正案を根拠とともに提示します。さらに、人間とAIの意見の違いを単なるAIの誤りとして扱わず、基準の曖昧さや古さ、意図的な創造的逸脱を見直すきっかけとして扱います。</p>
+      </div>
+    </article>
+    <article class="qa" id="q2">
+      <h3><span class="qn">Q2.</span> Don&#x27;t you have evaluation results yet? What can you claim at this point?</h3>
+      <p>Yes, that&#x27;s right. This is a work-in-progress, and we have not yet demonstrated effects. What we have so far is: (1) a review mechanism in which humans retain final decision authority, (2) a prototype that combines image analysis with in-house knowledge, and (3) an evaluation method for examining effects on human judgment, trust, and creativity. Quantitative effects will be tested in the upcoming field evaluation.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">評価結果はまだ出ていないのですか。現時点で何が言えますか？</p>
+        <p>はい。本研究はWork-in-Progressであり、現時点では効果を実証した段階ではありません。現時点の成果は、①人間が最終判断権を保持するレビューの仕組み、②画像分析と社内知識を組み合わせたプロトタイプ、③人間の判断・信頼・創造性への影響を調べる評価方法を整理したことです。定量的な効果は今後のフィールド評価で検証します。</p>
+      </div>
+    </article>
+    <article class="qa" id="q3">
+      <h3><span class="qn">Q3.</span> Why don&#x27;t you let the AI give scores or pass/fail judgments?</h3>
+      <p>Design judgment involves many perspectives — brand fit, functionality, target customer, price, materials, manufacturability, novelty — and collapsing them into a single score hides the reasons and trade-offs. A score shown by the AI could also pull human judgment toward it. So instead of scores or pass/fail, the system presents decision material and the reasons behind it.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">なぜAIにスコアや合否を出させないのですか？</p>
+        <p>デザインの判断は、ブランドらしさ、機能性、ターゲット、価格、素材、製造しやすさ、新しさなど複数の観点から成り、1つの点数にまとめると理由やトレードオフが見えにくくなるためです。また、AIが示した点数に人間の判断が引っ張られる可能性もあります。そのため本システムでは、点数や合否ではなく、判断材料とその理由を提示します。</p>
+      </div>
+    </article>
+  </section>
+  <section id="human-decision-authority">
+    <h2>Human decision authority</h2>
+    <article class="qa" id="q4">
+      <h3><span class="qn">Q4.</span> If a human makes the final call, is that alone enough to preserve human decision authority?</h3>
+      <p>We don&#x27;t think that alone is enough. If a human only approves at the end, they may in practice just be following the AI&#x27;s opinion. So we let humans intervene during the process: they can ask the AI &quot;why did you judge it that way?&quot; or &quot;which past products did you refer to?&quot;, and they can accept, modify, defer, reject, or re-ask about a proposal.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">最後に人間が決めれば、それだけで人間の判断権は守られるのでしょうか？</p>
+        <p>それだけでは不十分だと考えています。最後に人間が承認するだけでは、実際にはAIの意見に従っているだけの可能性があります。そのため、AIに『なぜそう判断したのか』『どの過去商品を参照したのか』と問い返し、提案を受け入れる、修正する、保留する、拒否する、再質問するといった形で判断の途中から人間が介入できるようにしています。</p>
+      </div>
+    </article>
+    <article class="qa" id="q5">
+      <h3><span class="qn">Q5.</span> When the human and the AI disagree, which one do you consider correct?</h3>
+      <p>We don&#x27;t assume either one is always right. The AI may point out that a design departs from past brand criteria while the designer is intentionally aiming for a new direction. Conversely, the human may be bound by past experience. What matters is not judging right or wrong immediately, but checking why they disagreed and revisiting the reference materials and the criteria themselves.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">人間とAIの判断が違った場合、どちらを正しいと考えるのですか？</p>
+        <p>どちらか一方が必ず正しいとは考えていません。AIが過去のブランド基準から外れていると指摘しても、デザイナーが意図的に新しい方向を狙っている場合があります。逆に、人間側が過去の経験にとらわれている場合もあります。そのため、重要なのは正誤を即断することではなく、なぜ意見が違ったのかを確認し、参照資料や判断基準そのものを見直すことです。</p>
+      </div>
+    </article>
+    <article class="qa" id="q6">
+      <h3><span class="qn">Q6.</span> Is your goal to get people to trust the AI?</h3>
+      <p>No. Our goal is not to maximize trust in the AI. What matters is that people can appropriately tell where the AI is useful and where humans should reconsider. Over-trusting the AI and accepting everything is undesirable, and so is rejecting everything.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">AIを信頼してもらうことが目的なのですか？</p>
+        <p>いいえ。AIへの信頼を最大化することが目的ではありません。重要なのは、AIが役立つ部分と、人間が再検討すべき部分を適切に使い分けられることです。AIを過信してすべて受け入れる状態も、逆にすべて拒否する状態も望ましくないと考えています。</p>
+      </div>
+    </article>
+    <article class="qa" id="q7">
+      <h3><span class="qn">Q7.</span> If people challenge the AI a lot, does that mean they are judging autonomously?</h3>
+      <p>Not necessarily. Many challenges could mean people are scrutinizing the AI carefully, but it could also mean the AI&#x27;s answers are poor. So we look not only at the number of challenges but also at why people challenged, how specific the challenges were, and whether their quality changed over sessions.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">AIへの反論が多ければ、人間が主体的に判断できていると言えるのですか？</p>
+        <p>必ずしもそうではありません。反論が多いのは、人間がAIをよく吟味しているためかもしれませんが、AIの回答品質が低いためかもしれません。そのため、反論の回数だけでなく、なぜ反論したのか、内容がどの程度具体的だったか、セッションを重ねて反論の質が変化したかも合わせて確認します。</p>
+      </div>
+    </article>
+    <article class="qa" id="q8">
+      <h3><span class="qn">Q8.</span> Doesn&#x27;t the name &quot;AI Design Director&quot; sound authoritative and make it harder to push back?</h3>
+      <p>That&#x27;s possible, and we see it as an important risk in this research. The name is meant to make the role easy to understand within the company, but the AI is given no authority to approve or reject products. In the evaluation we check whether challenges to the AI become extremely rare and whether people drift toward the AI&#x27;s first opinion; if needed, this will lead us to revise the name or how the output is presented.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">「AI Design Director」という名称が権威を感じさせ、反論しにくくするのではないですか？</p>
+        <p>その可能性はあり、本研究でも重要なリスクとして認識しています。名称は社内で役割を理解しやすくするためですが、AIには商品の承認・却下の権限を持たせません。評価では、AIへの反論が極端に少なくなっていないかや、AIの最初の意見に人間が寄っていないかを確認し、必要であれば名称や提示方法の見直しにつなげます。</p>
+      </div>
+    </article>
+    <article class="qa" id="q9">
+      <h3><span class="qn">Q9.</span> Are the human&#x27;s adopt/modify/defer/reject decisions recorded and used to update the brand criteria?</h3>
+      <p>The current prototype does not yet structure these evaluations and write them back to the knowledge base automatically. However, evaluations and follow-up questions remain in Dify&#x27;s conversation logs, so in the evaluation study we can analyze the frequency of challenges, acceptances, and rejections from them. A mechanism that automatically feeds this into brand criteria and organizational knowledge is future work.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">人間の採用・修正・保留・拒否は記録され、ブランド基準の更新に使われるのですか？</p>
+        <p>現プロトタイプでは、評価を構造化してナレッジへ自動的に書き戻す機能はまだ実装していません。ただし、評価や追問はDifyの会話ログに残るため、評価実験ではそこから反論や受け入れ・拒否の頻度を分析できます。ブランド基準や組織知識へ自動的に反映する仕組みは、今後の実装課題です。</p>
+      </div>
+    </article>
+  </section>
+  <section id="research-questions">
+    <h2>Research questions</h2>
+    <article class="qa" id="q10">
+      <h3><span class="qn">Q10.</span> What do you want to find out with the first research question?</h3>
+      <p>With the first question, we want to see whether the AI can present company-specific design criteria clearly, and whether humans can examine and discuss them. Rather than simply answering &quot;this is off-brand,&quot; the AI shows which documents or past cases it based that judgment on, and we look at whether people accept, modify, or push back on that evidence.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">1つ目の研究課題では、何を明らかにしたいのですか？</p>
+        <p>1つ目では、AIが企業固有のデザイン判断基準を分かりやすく示し、それについて人間が検討・議論できるかを明らかにしたいと考えています。単に『ブランドらしくない』と答えるのではなく、どの資料や過去事例を根拠にそう判断したのかを示し、人間がその根拠を受け入れるのか、修正するのか、反論するのかを確認します。</p>
+      </div>
+    </article>
+    <article class="qa" id="q11">
+      <h3><span class="qn">Q11.</span> What do you want to find out with the second research question?</h3>
+      <p>With the second question, we check whether people still think for themselves and keep final decision authority while using the AI. Specifically, we evaluate challenges to the AI; modifying, rejecting, or re-asking about proposals; whether judgments are pulled toward the AI&#x27;s first opinion; and whether users felt they were making the judgment themselves — combining interaction logs, questionnaires, and interviews.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">2つ目の研究課題では、何を明らかにしたいのですか？</p>
+        <p>2つ目では、AIを利用しても人間が自分で考え、最終判断権を維持できるかを確認します。具体的には、AIへの反論、提案の修正・拒否・再質問、AIの最初の意見に判断が引っ張られていないか、利用者自身が判断できていると感じたかを、操作ログ、アンケート、インタビューなどを組み合わせて評価します。</p>
+      </div>
+    </article>
+  </section>
+  <section id="evaluation-design">
+    <h2>Evaluation design</h2>
+    <article class="qa" id="q12">
+      <h3><span class="qn">Q12.</span> Could human judgment be pulled toward the AI&#x27;s first opinion? How will you measure that?</h3>
+      <p>Yes, it could. We plan to record each participant&#x27;s initial judgment and main concerns before they see the AI&#x27;s critique, and compare them with their final judgment after the AI&#x27;s output. We then check how far the change moved in the direction indicated by the AI&#x27;s first critique. We also look at the reasons and specificity of challenges, to distinguish between simply following the AI and being convinced after examining the evidence.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">AIの最初の意見に、人間の判断が引っ張られる可能性はありませんか。どう測りますか？</p>
+        <p>あります。そこで、AIの批評を見る前の初期判断と主要な懸念を記録し、AI提示後の最終判断と比較することを想定しています。最終判断の変化のうち、AIの最初の批評で示された方向へどの程度動いたかを確認します。さらに、反論の理由や具体性も合わせて見て、単にAIに従ったのか、根拠を吟味して納得したのかを区別したいと考えています。</p>
+      </div>
+    </article>
+    <article class="qa" id="q13">
+      <h3><span class="qn">Q13.</span> Isn&#x27;t 8–12 participants too few?</h3>
+      <p>The small number of participants is a limitation of this study. However, our aim is not large-scale statistical testing but exploring how the system is used in the real work of a small company. So we interpret quantitative measures together with interaction logs, questionnaires, and interviews, and use this to prepare for larger studies.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">参加者が8〜12名では少なくないですか？</p>
+        <p>参加者数が少ない点は本研究の制約です。ただし今回は、大規模な統計的検証ではなく、実際の小規模企業の業務でシステムがどのように使われるかを探索的に調べることを目的としています。そのため、定量的な指標だけでなく、操作ログ、アンケート、インタビューも組み合わせて解釈し、今後のより大規模な検証につなげます。</p>
+      </div>
+    </article>
+    <article class="qa" id="q14">
+      <h3><span class="qn">Q14.</span> Why compare against the current review method?</h3>
+      <p>Because we want to know what actually changes in day-to-day work when the AI is introduced. In the comparison we look not only at review time but also at comment specificity, agreement on major concerns, and changes in final judgments. The question is not just whether the AI is faster, but how it affects the content and quality of the judgments.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">なぜ現在のレビュー方法と比較するのですか？</p>
+        <p>AIを導入することで、実際の業務が何から何へ変わるのかを知りたいからです。比較では、レビュー時間だけでなく、コメントの具体性、重要な懸念事項の一致、最終判断の変化なども確認します。AIが単に速いかではなく、判断の内容や質にどのような影響を与えるかを見ます。</p>
+      </div>
+    </article>
+    <article class="qa" id="q15">
+      <h3><span class="qn">Q15.</span> Even with counterbalancing, won&#x27;t seeing the same proposal twice cause learning effects?</h3>
+      <p>To avoid that, we won&#x27;t show the same proposal under both conditions. We plan to prepare separate anonymized proposal sets matched for difficulty, and to counterbalance both the order of conditions and the assignment of proposal sets. This lets us separate order effects from differences between the proposals as much as possible.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">カウンターバランスをしても、同じ提案を2回見ることで学習効果が出ませんか？</p>
+        <p>その影響を避けるため、同じ提案を両条件で繰り返し見るのではなく、難易度をそろえた別々の匿名化提案セットを用意し、条件の順序と提案セットの割り当ての両方を入れ替える計画です。これにより、順序による影響と提案そのものの違いをできるだけ分けて考えます。</p>
+      </div>
+    </article>
+    <article class="qa" id="q16">
+      <h3><span class="qn">Q16.</span> Do you expect the AI to shorten review time?</h3>
+      <p>Not necessarily. Asking the AI questions or challenging it may actually take more time. But if, as a result, the reasons for decisions become clearer, comments become more specific, and previously tacit criteria are put into words, that is an important effect too. So we evaluate the content and quality of judgments, not just efficiency.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">AIを使えばレビュー時間は短くなると考えていますか？</p>
+        <p>必ずしも短くなるとは考えていません。AIに質問したり反論したりすることで、むしろ時間が増える可能性もあります。ただし、その結果として判断理由が明確になり、コメントが具体的になり、これまで暗黙だった基準が言葉になるのであれば、それも重要な効果です。そのため、効率だけでなくレビューの内容や判断の質も評価します。</p>
+      </div>
+    </article>
+  </section>
+  <section id="creativity">
+    <h2>Creativity</h2>
+    <article class="qa" id="q17">
+      <h3><span class="qn">Q17.</span> If the AI refers to past products, won&#x27;t designs all start to look alike? How will you check?</h3>
+      <p>That risk exists. Referring to past products helps keep the brand consistent, but it may also pull designs toward past success patterns. So we plan to check whether revised designs become too close to past products, using image similarity and expert ratings. We also designed the system so that having no precedent is not judged as bad in itself; it is treated as a matter for human judgment.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">過去の商品をAIに参照させると、似た商品ばかりになりませんか。どう確認しますか？</p>
+        <p>その危険性はあります。過去商品を参照するとブランドの一貫性を保ちやすい一方、過去の成功パターンへ寄る可能性があります。そのため、修正後のデザインが過去商品に近づきすぎていないかを、画像の類似度や専門家による評価などで確認することを想定しています。また、前例がないこと自体を悪いと判断せず、人間が判断すべき事項として扱う設計にしています。</p>
+      </div>
+    </article>
+    <article class="qa" id="q18">
+      <h3><span class="qn">Q18.</span> How will you evaluate creativity?</h3>
+      <p>Creativity is hard to capture in a single number, so we combine several perspectives — for example, whether the AI broadened ideas or made people feel constrained, whether revisions became too close to past products, and whether people felt they made creative decisions themselves — using questionnaires, interviews, and design comparisons.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">創造性はどのように評価するのですか？</p>
+        <p>創造性を1つの数値だけで評価することは難しいため、複数の観点を組み合わせます。例えば、AIによってアイデアが広がったか、逆に制限されたと感じたか、修正案が過去商品に近づきすぎていないか、自分で創造的な判断ができたと感じたかを、アンケート、インタビュー、デザインの比較などから確認します。</p>
+      </div>
+    </article>
+    <article class="qa" id="q19">
+      <h3><span class="qn">Q19.</span> If the only evidence is past assets, won&#x27;t new and ambitious designs be at a disadvantage?</h3>
+      <p>To avoid that risk, having no precedent is not turned into a negative evaluation. Features whose basis cannot be confirmed in past documents are separated as &quot;elements without precedent&quot; and treated as matters for human judgment. In other words, the design separates &quot;nothing similar exists in the past&quot; from &quot;there is a problem with the design.&quot;</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">過去の資産だけを根拠にすると、新しい挑戦的なデザインほど不利になりませんか？</p>
+        <p>そのリスクを避けるため、過去に前例がないことをそのまま悪い評価にはしません。過去資料で根拠を確認できない特徴は、『前例のない要素』として分け、人間が判断すべき事項として扱います。つまり、過去に似たものがないことと、デザインとして問題があることを分ける設計です。</p>
+      </div>
+    </article>
+  </section>
+  <section id="rag-knowledge-design">
+    <h2>RAG &amp; knowledge design</h2>
+    <article class="qa" id="q20">
+      <h3><span class="qn">Q20.</span> Why do you use RAG?</h3>
+      <p>A general-purpose LLM alone cannot know a company&#x27;s own past products, reviews, and decisions. With RAG, the system searches in-house documents each time, so the AI&#x27;s answers can reflect the company&#x27;s own experience. And when documents are updated, we can update the referenced knowledge rather than retraining the model. Note that the current review path does not yet retrieve the brand guidelines directly; this is a planned improvement.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">なぜRAGを使うのですか？</p>
+        <p>一般的なLLMだけでは、その企業固有の過去商品やレビュー、判断事例を十分に知ることができないからです。RAGを使うことで、社内資料をその都度検索し、AIの回答に企業固有の経験を反映できます。また、資料が更新された場合も、モデル自体を再学習するのではなく、参照する知識を更新して対応しやすくなります。なお、現状のレビュー経路ではブランドガイドラインを直接検索しておらず、この点は今後の改修事項です。</p>
+      </div>
+    </article>
+    <article class="qa" id="q21">
+      <h3><span class="qn">Q21.</span> What happens if the AI refers to the wrong documents?</h3>
+      <p>That can happen. That&#x27;s why it matters that humans can check which documents the AI used. When an answer looks wrong, we separate whether the model&#x27;s interpretation was the problem or whether the retrieved documents were inappropriate in the first place. Retrieval problems are also analyzed as one cause of human–AI disagreement.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">AIが間違った資料を参考にした場合はどうするのですか？</p>
+        <p>その可能性はあります。そのため、AIがどの資料を参考にしたのかを人間が確認できることが重要です。回答がおかしい場合に、モデルの解釈が問題だったのか、そもそも検索された資料が不適切だったのかを分けて考えます。検索の問題自体も、人間とAIの意見が異なる原因の1つとして分析対象にします。</p>
+      </div>
+    </article>
+    <article class="qa" id="q22">
+      <h3><span class="qn">Q22.</span> Why did you split retrieval into four searches instead of one?</h3>
+      <p>With a single search, different questions — shape, value, concerns, past decisions — get mixed together, and the results may be documents that are only loosely relevant to each. So we split it into A: structural drawing catalog, B: hit-factor analysis, C: review comments, and D: decision examples, and generate a query suited to each purpose. The aim is to retrieve evidence that is closer in meaning to each point of the review.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">なぜ検索を1本ではなく4本に分けたのですか？</p>
+        <p>1つの検索だけでは、形状、価値、懸念、過去の判断という異なる問いが混ざり、どれにも中途半端に似た資料が返る可能性があるためです。そこで、A：構造図カタログ、B：ヒット要因分析、C：レビューコメント集、D：判断例集に分け、それぞれ目的に合った検索語を生成しています。これにより、レビューの各論点に対して、より意味の近い根拠を取り出すことを狙っています。</p>
+      </div>
+    </article>
+    <article class="qa" id="q23">
+      <h3><span class="qn">Q23.</span> How did you build the four knowledge bases?</h3>
+      <p>A organizes real products&#x27; dimensions, weight, materials, pocket layout, structural drawings, and photos. B covers products&#x27; value and reasons for their appeal, C covers concerns raised at the planning stage, and D covers decision examples such as approved, on hold, or sent back, with reasons. Currently B, C, and D include dummy data created for research; in real operation this kind of data would need to be accumulated continuously. That in itself suggests what knowledge a company should keep.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">4つのナレッジはどのように作ったのですか？</p>
+        <p>Aは実在製品の寸法、重量、素材、ポケット構成、構造図、写真などを整理したものです。Bは製品の価値や支持理由、Cは企画段階の懸念、Dは承認・保留・差戻しなどの判断例と理由を扱います。現状ではB、C、Dには研究用のダミーデータも含まれており、実運用ではこの種類のデータを継続的に蓄積する必要があります。この点自体も、企業内でどの知識を残すべきかという示唆になります。</p>
+      </div>
+    </article>
+    <article class="qa" id="q24">
+      <h3><span class="qn">Q24.</span> Why &quot;one product = one page = one chunk&quot;?</h3>
+      <p>If one product&#x27;s information is split across chunks, the system may retrieve only the dimensions without the structural drawing or photos, fragmenting the product&#x27;s information. Aligning chunks to products makes it easier to retrieve specs, description, drawings, and photos as one unit. We use Dify&#x27;s page-based splitting when importing PDFs, so that product boundaries and chunk boundaries match as closely as possible.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">なぜ「1商品＝1ページ＝1チャンク」にしているのですか？</p>
+        <p>1つの商品情報が複数のチャンクに分かれると、寸法だけ取得され、構造図や写真が一緒に取れないなど、商品の情報が分断されるためです。商品単位でチャンクをそろえることで、仕様、説明、構造図、写真を1件のまとまりとして取得しやすくします。DifyのPDF取り込み時のページ単位分割を利用し、商品とチャンクの境界をできるだけ一致させています。</p>
+      </div>
+    </article>
+    <article class="qa" id="q25">
+      <h3><span class="qn">Q25.</span> Why do you explicitly say &quot;no match&quot; when a search returns zero results?</h3>
+      <p>If we just pass an empty result, the model can&#x27;t easily tell whether &quot;it searched and found nothing&quot; or &quot;no information was provided,&quot; and it may fill the gap with general knowledge. So we state &quot;no match&quot; explicitly and pass the fact that nothing could be confirmed from in-house documents as input. If every search returns no match, the system does not force all seven items; it only states what could not be confirmed and suggests searching again.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">検索結果が0件のとき、なぜ「該当なし」と明示するのですか？</p>
+        <p>空の結果だけを渡すと、モデルが『検索したが無かった』のか『そもそも情報が渡されていない』のかを区別しにくく、一般知識で補ってしまう可能性があります。そのため『該当なし』と明示し、社内資料から確認できなかったこと自体を入力として渡します。すべての検索が該当なしの場合は、無理に7項目を埋めず、確認できないことや再検索の提案にとどめる設計です。</p>
+      </div>
+    </article>
+    <article class="qa" id="q26">
+      <h3><span class="qn">Q26.</span> Why do you distinguish &quot;not yet confirmed&quot; from &quot;undecided&quot; for conditions?</h3>
+      <p>&quot;Not yet confirmed&quot; is information we haven&#x27;t asked about yet, while &quot;undecided&quot; is something the person in charge hasn&#x27;t decided. The former is missing information that needs to be checked; the latter tells us the order of decisions — what needs to be decided first. We also use this distinction to avoid asserting things such as materials from the image&#x27;s appearance alone.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">条件の「未確認」と「未定」を分けているのはなぜですか？</p>
+        <p>『未確認』はまだ聞けていない情報であり、『未定』は担当者がまだ決めていない情報だからです。前者は情報不足として確認が必要ですが、後者は『先に何を決める必要があるか』という判断の順序そのものになります。また、画像の見た目だけで素材などを断定しないためにも、この区別を使っています。</p>
+      </div>
+    </article>
+    <article class="qa" id="q27">
+      <h3><span class="qn">Q27.</span> How do the seven review items map to the four knowledge bases?</h3>
+      <p>For each review item we define in advance which knowledge base is the main source of evidence. For example, alignment with past products and points to reconsider rely on A, concerns on C and D, and matters for human judgment mainly on D. Fixing this mapping makes it easier to diagnose, when an item&#x27;s answer is thin, whether the cause lies in the retrieval results or the knowledge base rather than only the model.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">7項目のレビューと4つのナレッジには、どのような対応関係がありますか？</p>
+        <p>レビュー項目ごとに主な根拠となるナレッジをあらかじめ想定しています。例えば、過去製品との合致・再検討点はA、懸念はCとD、人間が判断すべき事項はDが中心です。この対応を決めておくことで、ある項目の回答が薄いときに、モデルだけでなく検索結果やナレッジ側に原因がないかを診断しやすくなります。</p>
+      </div>
+    </article>
+    <article class="qa" id="q28">
+      <h3><span class="qn">Q28.</span> Why does the system search again every time the user asks a follow-up question?</h3>
+      <p>Because follow-up questions often ask about a different point from before. By reflecting the point being asked into the query and searching again, we can retrieve documents closer to questions like &quot;why did you judge it that way?&quot; or &quot;which past products did you compare with?&quot;. If different documents come back than before, that difference can be checked too.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">ユーザーが追加質問したとき、なぜ毎回検索をやり直すのですか？</p>
+        <p>追加質問では、前回とは別の論点を尋ねることが多いためです。質問された論点を検索語に反映して再検索することで、『なぜそう判断したのか』『どの過去製品と比べたのか』に、より近い資料を取り直せます。前回と異なる資料が返った場合は、その違いも確認できるようにする考え方です。</p>
+      </div>
+    </article>
+    <article class="qa" id="q29">
+      <h3><span class="qn">Q29.</span> The paper says the system refers to the brand policy — does the current implementation actually retrieve it directly?</h3>
+      <p>At this point they don&#x27;t fully match. The brand guideline knowledge base exists, but the current design-review path does not retrieve it directly; criteria are built mainly from past reasons for appeal, concerns, and decision examples — that is, from track record. We clearly present this as a gap between the paper and the current implementation, and adding direct retrieval of the brand policy is a future improvement.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">論文ではブランド方針を参照するとありますが、現在の実装でも直接参照していますか？</p>
+        <p>現時点では完全には一致していません。ブランドガイドラインのナレッジ自体はありますが、現在のデザインレビュー経路では直接検索しておらず、主に過去の支持理由、懸念、判断例などから実績ベースで判断基準を構成しています。これは論文と現実装の差として明確に説明し、ブランド方針を直接参照する検索を追加することが今後の改修課題です。</p>
+      </div>
+    </article>
+  </section>
+  <section id="implementation">
+    <h2>Implementation</h2>
+    <article class="qa" id="q30">
+      <h3><span class="qn">Q30.</span> Please walk us through the design review process.</h3>
+      <p>In the current Dify implementation, the system classifies the question, then organizes the image and conditions, and asks for an image if none is attached. If there is an image, it creates search queries for each of A–D and searches the structural drawing catalog, hit factors, review comments, and decision examples. It formats the results, marking zero-hit searches explicitly as &quot;no match,&quot; and finally generates a seven-item review with evidence.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">デザインレビューの処理の流れを教えてください。</p>
+        <p>現在のDify実装では、質問を分類した後、画像と条件を整理し、画像が無ければ添付を依頼します。画像がある場合は、A〜Dそれぞれに向けた検索クエリを作成し、構造図カタログ、ヒット要因、レビューコメント、判断例を検索します。検索結果を整形し、0件は『該当なし』として明示したうえで、最後に根拠付きの7項目レビューを生成します。</p>
+      </div>
+    </article>
+    <article class="qa" id="q31">
+      <h3><span class="qn">Q31.</span> Why does the system run a review even when conditions are incomplete?</h3>
+      <p>Because we want reviews even at early stages, such as initial sketches, when conditions are not yet decided. Also, asking about all missing conditions up front increased the back-and-forth with users and turned inputs into lists of conditions, which made classification unstable. So if there is an image, the system reviews first, states which points could not be judged because of missing conditions, and asks for the needed conditions afterwards.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">条件がそろっていなくてもレビューを実行するのはなぜですか？</p>
+        <p>初期のスケッチ段階など、条件がまだ決まっていない状態でもレビューしたいからです。また、最初に不足条件をすべて質問すると、利用者との往復が増え、入力が条件の羅列になって分類が不安定になる問題もありました。そのため、画像があればまずレビューし、条件不足によって判断できなかった点を明示して、必要な追加条件を後から尋ねる設計にしています。</p>
+      </div>
+    </article>
+    <article class="qa" id="q32">
+      <h3><span class="qn">Q32.</span> Why are the four searches run sequentially rather than in parallel?</h3>
+      <p>So that earlier results can be used in later queries. For example, putting the number or name of a similar past product found in A into the queries for B and C makes it easier to find that product&#x27;s reasons for appeal and concerns. We also use conflicts between B&#x27;s reasons for appeal and the current conditions in the query for D&#x27;s decision examples. The trade-off is a longer response time.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">4つの検索を並列ではなく順番に実行しているのはなぜですか？</p>
+        <p>前の検索結果を次の検索語に利用するためです。例えば、Aで見つかった近い過去製品の番号や名称を、BやCの検索語に入れることで、その製品に関する支持理由や懸念を探しやすくします。さらに、Bで得た支持理由と今回の条件の衝突をDの判断例検索に使います。その分、応答時間は⻑くなるため、速度とのトレードオフがあります。</p>
+      </div>
+    </article>
+    <article class="qa" id="q33">
+      <h3><span class="qn">Q33.</span> How did you set top_k and the similarity thresholds?</h3>
+      <p>Currently top_k is limited to 2 for each asset to keep irrelevant documents out. The similarity thresholds are 0.5 for A, 0.51 for B and C, and 0.35 for D, tuned empirically through trials. If a threshold is too high, &quot;no match&quot; increases; if too low, weakly related documents creep in. We need to evaluate retrieval accuracy systematically and tune these in the future.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">検索のtop_kや類似度の閾値は、どのように決めましたか？</p>
+        <p>現状は、各資産でtop_kを2件に絞り、無関係な資料の混入を抑えています。類似度の閾値はAが0.5、BとCが0.51、Dが0.35で、試行を通じて経験的に調整した値です。閾値が高すぎると『該当なし』が増え、低すぎると関連の薄い資料が混ざるため、今後は検索精度を体系的に評価してチューニングする必要があります。</p>
+      </div>
+    </article>
+    <article class="qa" id="q34">
+      <h3><span class="qn">Q34.</span> Which models do you use, and why multiple models?</h3>
+      <p>In the current implementation, models are split by role. For question classification and query generation we use a lightweight GPT-family model for stable output and lower cost; for image understanding and final review generation we use a vision-capable Gemini-family model. For embeddings, we also use different models for image-containing assets and text-centric assets. These are implementation choices; the core contribution of this research is not a specific model but the division of roles between humans and AI and the review mechanism.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">どのモデルを使っていますか。また、なぜ複数のモデルを使うのですか？</p>
+        <p>現状実装では役割ごとにモデルを分けています。質問分類や検索クエリ生成は、出力の安定性とコストを重視してGPT系の軽量モデルを使い、画像理解と最終レビュー生成にはVision対応のGemini系モデルを使っています。埋め込みも、画像を含む資産とテキスト中心の資産でモデルを分けています。これは実装上の選択であり、本研究の中心的な貢献は特定モデルではなく、人間とAIの役割分担とレビューの仕組みにあります。</p>
+      </div>
+    </article>
+    <article class="qa" id="q35">
+      <h3><span class="qn">Q35.</span> It&#x27;s a fixed workflow — can you really call it an &quot;AI agent&quot;?</h3>
+      <p>We use the word &quot;agent&quot; in a limited sense. Within a single review, the AI generates search queries according to the input and decides which in-house documents to refer to and how to build the critique. On the other hand, it is not a general agent that makes long-term plans or autonomously uses many external tools. To avoid overstating its scope, we position it as a limited review-support agent.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">固定されたワークフローなのに「AIエージェント」と呼べるのですか？</p>
+        <p>本研究では『エージェント』という言葉を限定的な意味で使っています。1回のレビューの中で、入力に応じて検索語を生成し、どの社内資料を参照してどのように批評を組み立てるかをAIが決めます。一方で、⻑期的な計画や多数の外部ツールを自律的に使う一般的なエージェントではありません。その範囲を誇張しないよう、限定的なレビュー支援エージェントとして位置づけています。</p>
+      </div>
+    </article>
+  </section>
+  <section id="reliability-quality">
+    <h2>Reliability &amp; quality</h2>
+    <article class="qa" id="q36">
+      <h3><span class="qn">Q36.</span> Can the &quot;no scores or pass/fail&quot; policy really be enforced by the prompt alone?</h3>
+      <p>We don&#x27;t rely only on prohibitions in the prompt; we combine several mechanisms: passing zero- hit searches as &quot;no match,&quot; marking conditions as &quot;not yet confirmed&quot; or &quot;undecided,&quot; and output rules that forbid scores, percentages, graded ratings, pass/fail, and expressions such as &quot;should be adopted.&quot; If all searches return no match, the system also does not force the seven items. However, this is not a complete guarantee, so a post-generation check that detects forbidden expressions is a candidate improvement.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">「スコアや合否を出さない」という方針は、プロンプトだけで本当に守れますか？</p>
+        <p>プロンプトの禁止だけに頼らず、複数の仕組みを組み合わせています。検索0件を『該当なし』として渡す、条件の『未確認』『未定』を明示する、出力規則で点数・割合・段階評価・合否・『採用すべき』といった表現を禁止する、といった方法です。また、すべての検索が該当なしの場合は無理に7項目を埋めないようにしています。ただし完全な保証ではないため、生成後に禁止表現を検出するチェックも今後の改善候補です。</p>
+      </div>
+    </article>
+    <article class="qa" id="q37">
+      <h3><span class="qn">Q37.</span> How do you ensure the evidence in reviews is not fabricated?</h3>
+      <p>In review generation, the system uses only the retrieved and formatted results as evidence, and is instructed not to guess dimensions, materials, or track records that are not in the results. When citing, it must show the document name and its content, not just a number, and anything not in the pre-listed reference assets cannot be used as evidence. Zero-hit searches are explicitly marked &quot;no match,&quot; and when there is no evidence, the system says so. Still, as with any generative AI, the risk is not zero, and log reviews and additional checks are needed.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">レビューの根拠が捏造されていないことを、どう担保していますか？</p>
+        <p>レビュー生成では、検索して整形した結果だけを根拠として使うようにし、検索結果にない寸法、素材、実績を推測で書かないよう指示しています。引用時には番号だけでなく、資料名とその内容を示させ、先に一覧化した参照資産に無いものは根拠として使わない設計です。さらに、検索0件は『該当なし』と明示し、根拠が無いときは無いと回答させます。ただし、生成AIである以上ゼロリスクではなく、ログ確認や追加チェックが必要です。</p>
+      </div>
+    </article>
+  </section>
+  <section id="critiques-of-the-research">
+    <h2>Critiques of the research</h2>
+    <article class="qa" id="q38">
+      <h3><span class="qn">Q38.</span> Wouldn&#x27;t human creativity be better protected without using AI at all?</h3>
+      <p>That may be so. This research does not assume that introducing AI always makes things better, because the AI may pull people toward its opinions, push designs toward past products, or reduce new attempts. So rather than assuming AI is beneficial, we make it a research question whether human judgment and creativity can really be preserved.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">AIを使わない方が、人間の創造性を守れるのではないですか？</p>
+        <p>その可能性もあります。本研究は『AIを導入すれば必ず良くなる』とは考えていません。AIによって人間が意見に引っ張られたり、過去の商品へデザインが寄ったり、新しい挑戦が減ったりする可能性があるからです。そのため、AI導入の効果を前提にするのではなく、本当に人間の判断や創造性を保てるかを評価すること自体を研究課題としています。</p>
+      </div>
+    </article>
+    <article class="qa" id="q39">
+      <h3><span class="qn">Q39.</span> If the AI presents brand criteria, won&#x27;t people become bound by those criteria?</h3>
+      <p>That risk exists. So we do not treat fitting the brand criteria as the absolute right answer. Even if a design departs from current criteria, the difference may be meaningful if it is intended to reach new customers or a new brand image. We think the AI should not only check conformity with the criteria but also prompt a review of the criteria themselves.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">AIがブランド基準を示すことで、人間がその基準に縛られませんか？</p>
+        <p>その危険性はあります。そのため、ブランド基準に合っていることを絶対的な正解とは扱いません。現在の基準から外れていても、新しい顧客層や新しいブランドイメージを狙う意図があるなら、その違いに意味がある可能性があります。AIは基準への適合を確認するだけでなく、基準自体を見直すきっかけになるべきだと考えています。</p>
+      </div>
+    </article>
+  </section>
+  <section id="organizational-knowledge">
+    <h2>Organizational knowledge</h2>
+    <article class="qa" id="q40">
+      <h3><span class="qn">Q40.</span> Why would disagreements between humans and the AI lead to organizational learning?</h3>
+      <p>Experienced people&#x27;s judgments are often tacit — &quot;it somehow doesn&#x27;t feel on-brand,&quot; &quot;this looks like it will sell&quot; — and the reasons are not recorded. When a human pushes back on an AI suggestion, they need to put their reason into words, such as &quot;we don&#x27;t emphasize that criterion now&quot; or &quot;this time we&#x27;re targeting a new customer segment.&quot; Analyzing such records may turn tacit knowledge into shareable knowledge. However, automatic feedback into the knowledge base is not implemented yet.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">人間とAIの意見の違いが、なぜ組織の学びにつながるのですか？</p>
+        <p>経験者の判断は、『何となくブランドらしくない』『これは売れそうだ』のように暗黙的で、理由が残らないことがあります。AIの提案に人間が反論すると、『この基準は今は重視していない』『今回は新しい顧客層を狙っている』のように、判断理由を言葉にする必要が生じます。その記録を分析することで、暗黙知を共有可能な知識へ変える可能性があります。ただし現時点では、知識ベースへ自動反映する機能は未実装です。</p>
+      </div>
+    </article>
+    <article class="qa" id="q41">
+      <h3><span class="qn">Q41.</span> If the AI uses past decisions, won&#x27;t it inherit past mistakes and biases?</h3>
+      <p>It could. Past decisions are not today&#x27;s right answers; they may reflect the market of the time and the values of the people involved. So past cases are treated not as &quot;ground truth&quot; but as decision material, and humans can examine whether they are still valid today. Realizing from a human–AI disagreement that &quot;this criterion is outdated&quot; is also something this research values.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">過去の判断をAIに使わせると、過去の間違いや偏りまで引き継ぎませんか？</p>
+        <p>その可能性はあります。過去の判断は現在の正解ではなく、当時の市場環境や担当者の価値観を含んでいる場合があります。そのため、過去事例は『正解データ』ではなく判断材料として扱い、人間が現在も妥当かを検討できるようにします。人間とAIの不一致から『この基準は古い』と気づくことも、本研究で重視している点です。</p>
+      </div>
+    </article>
+  </section>
+  <section id="security-ethics">
+    <h2>Security &amp; ethics</h2>
+    <article class="qa" id="q42">
+      <h3><span class="qn">Q42.</span> What about sending confidential company information and unreleased designs to an external LLM, and about anonymization and access control?</h3>
+      <p>This is an important practical issue. Since the current prototype uses external APIs, we need to consider the API providers&#x27; data retention and training-use terms, the handling of unreleased images, and switching to local inference. Access control is currently at the Dify workspace level; finer-grained permissions per asset are not implemented. Also, while real product names are used in internal operation, our policy is to anonymize them in evaluation studies and external presentations.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">企業の機密情報や未発表デザインを外部LLMに送ること、匿名化やアクセス制御についてどう考えていますか？</p>
+        <p>これは重要な実運用上の課題です。現プロトタイプは外部APIを利用しているため、APIのデータ保持・学習利用条件、未発表画像の扱い、ローカル推論への切り替えなどを検討する必要があります。現状のアクセス制御はDifyのワークスペース単位で、資産ごとの細かな権限分離は未実装です。また、社内運用では製品名を実名で使っていますが、評価実験や社外提示では匿名化する方針です。</p>
+      </div>
+    </article>
+    <article class="qa" id="q43">
+      <h3><span class="qn">Q43.</span> Might designers feel that they are being &quot;evaluated by the AI&quot;?</h3>
+      <p>Yes, they might. That&#x27;s why the system is positioned not as evaluating the designer, but as presenting material for examining the submitted design proposal. There is no obligation to follow the AI&#x27;s suggestions; users can question, modify, or reject them. In the evaluation we also need to check whether users perceived the AI as a supporter, or as an evaluator or supervisor.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">デザイナーが『AIに評価されている』と感じる可能性はありませんか？</p>
+        <p>あります。そのため、本システムはデザイナー本人を評価するのではなく、提出されたデザイン案について検討材料を提示するものとして位置づけています。また、AIの提案に従う義務はなく、質問、修正、拒否ができます。評価では、利用者がAIを支援者と感じたのか、評価者や監督者と感じたのかも確認する必要があります。</p>
+      </div>
+    </article>
+  </section>
+  <section id="generalization-limitations">
+    <h2>Generalization &amp; limitations</h2>
+    <article class="qa" id="q44">
+      <h3><span class="qn">Q44.</span> This is a case from one apparel company — can it generalize to other companies or industries?</h3>
+      <p>At this stage, we do not claim that results from one company generalize directly to others. However, characteristics such as judgment being concentrated in a few experienced people, criteria not being well documented, decisions relying on past cases, and the lack of a single right answer also exist in product design, packaging, advertising, and web design. So we think it is worth testing this mechanism and evaluation method in other domains.</p>
+      <div class="ja" lang="ja">
+        <p class="ja-q">1社のアパレル企業の事例ですが、他の企業や業種にも一般化できますか？</p>
+        <p>現段階では、1社の結果をそのまま他の企業へ一般化できるとは主張しません。ただし、少数の経験者に判断が集中している、判断基準が十分に文章化されていない、過去事例を参考に判断する、正解を1つに決めにくい、といった特徴は、製品デザイン、パッケージ、広告、Webデザインなどにも存在します。そのため、今回の仕組みや評価方法を他分野で検証する価値はあると考えています。</p>
+      </div>
+    </article>
+  </section>
+
+  <p class="top"><a href="#">↑ Back to top</a></p>
+  <footer>
+    <p><strong>Contact</strong> — Koji Okazaki, <a href="mailto:okazaki-kouji@aiit.ac.jp">okazaki-kouji@aiit.ac.jp</a></p>
+  </footer>
+</body>
+</html>
